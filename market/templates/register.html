@@ -1,0 +1,45 @@
+{% extends 'base.html '%}
+
+{% block title %}
+    Flask | Registration
+{% endblock%}
+
+{% block content%}
+    <div class="container">
+        
+        <form method="POST" class="form-register" style="color:whitesmoke">
+            <!-- helps user from CSRF attacks by generating some token-->
+            {{ register_form.hidden_tag() }} 
+            <div class="text-center">
+                <img class="mb-4" src="{{url_for('static', filename='registrationImage.jpeg')}}" height="300" style="margin-top: 20px">
+                
+                <br>
+                
+                <h1 class="h3 mb-3 font-weight-semi-bold">
+                    <u>Please Create Your Account</u> 
+                </h1>
+            </div>
+            <br>
+
+            {{register_form.username.label()}}
+            {{register_form.username(class="form-control", placeholder="Bruce Wayne")}}
+            <br>
+            {{register_form.emailAddress.label()}}
+            {{register_form.emailAddress(class="form-control", placeholder="BruceWayne@domain.com")}}
+            <br>
+            {{register_form.password_1.label()}}
+            {{register_form.password_1(class="form-control", placeholder="Password")}}
+            <br>
+            {{register_form.password_2.label()}}
+            {{register_form.password_2(class="form-control", placeholder="Confirm Password")}}
+            <br>
+            <div class="checkbox mb-3 text-center">
+                <h6>Already have an account ?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{url_for('login_page')}}">Login</a>
+            </div> 
+            <br>
+            
+            {{register_form.submit(class="btn btn-lg btn-block btn-primary")}}
+        </form>
+    </div>
+{% endblock%}
